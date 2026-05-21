@@ -104,3 +104,52 @@ class VagaFrontEnd extends Vaga {
     return `Nível da vaga: ${this.nivel}`;
   }
 }
+
+// ============================================================
+// FUNÇÕES AUXILIARES
+// ============================================================
+
+// filter — habilidades que o candidato possui na vaga
+function calcularHabilidadesEncontradas(candidato, vaga) {
+  return vaga.requisitos.filter((requisito) =>
+    candidato.habilidades.includes(requisito),
+  );
+}
+
+// filter — habilidades que o candidato NÃO possui na vaga
+function calcularHabilidadesFaltantes(candidato, vaga) {
+  return vaga.requisitos.filter(
+    (requisito) => !candidato.habilidades.includes(requisito),
+  );
+}
+
+function calcularPercentual(candidato, vaga) {
+  const habEncontradas = calcularHabilidadesEncontradas(candidato, vaga);
+  return Math.round((habEncontradas.length / vaga.requisitos.length) * 100);
+}
+
+// ============================================================
+// FUNÇÕES PRINCIPAIS
+// ============================================================
+
+function calcularCompatibilidade(candidato, vaga) {
+  let habEncontradas = calcularHabilidadesEncontradas(candidato, vaga);
+  habEncontradas =
+    habEncontradas.length === 0
+      ? "Nenhuma. O candidato não possui nenhuma das habilidades exigidas."
+      : habEncontradas.join(", ");
+
+  let habFaltantes = calcularHabilidadesFaltantes(candidato, vaga);
+  habFaltantes =
+    habFaltantes.length === 0
+      ? "Nenhuma. O candidato possui todas as habilidades exigidas."
+      : habFaltantes.join(", ");
+
+  const percentual = calcularPercentual(candidato, vaga);
+
+  console.log(`Empresa: ${vaga.empresa}`);
+  console.log(`Cargo: ${vaga.cargo}`);
+  console.log(`Compatibilidade: ${percentual}%`);
+  console.log(`Habilidades Encontradas: ${habEncontradas}`);
+  console.log(`Habilidades Faltantes: ${habFaltantes}`);
+}
