@@ -128,6 +128,16 @@ function calcularPercentual(candidato, vaga) {
   return Math.round((habEncontradas.length / vaga.requisitos.length) * 100);
 }
 
+function classificarCompatibilidade(percentual) {
+  if (percentual >= 80) {
+    return "Alta compatibilidade";
+  } else if (percentual >= 50) {
+    return "Média compatibilidade";
+  } else {
+    return "Baixa compatibilidade";
+  }
+}
+
 // ============================================================
 // FUNÇÕES PRINCIPAIS
 // ============================================================
@@ -146,10 +156,12 @@ function calcularCompatibilidade(candidato, vaga) {
       : habFaltantes.join(", ");
 
   const percentual = calcularPercentual(candidato, vaga);
+  const classificacao = classificarCompatibilidade(percentual);
 
   console.log(`Empresa: ${vaga.empresa}`);
   console.log(`Cargo: ${vaga.cargo}`);
   console.log(`Compatibilidade: ${percentual}%`);
   console.log(`Habilidades Encontradas: ${habEncontradas}`);
   console.log(`Habilidades Faltantes: ${habFaltantes}`);
+  console.log(`Classificação: ${classificacao}`);
 }
