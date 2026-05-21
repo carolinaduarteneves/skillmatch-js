@@ -213,3 +213,18 @@ function melhorVaga(candidato, vagas) {
   console.log(`Vaga mais compatível: ${melhor.empresa} - ${melhor.cargo}`);
   console.log(`Compatibilidade: ${percentual}%`);
 }
+
+// ============================================================
+// CALLBACK
+// ============================================================
+
+function finalizarAnalise(nomeCandidato, callback) {
+  console.log("Análise finalizada.");
+  callback(nomeCandidato);
+}
+
+function exibirMensagemFinal(nome) {
+  console.log(
+    `${nome}, revise suas habilidades faltantes e atualize seu plano de estudos.`,
+  );
+}
