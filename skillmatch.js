@@ -165,3 +165,15 @@ function calcularCompatibilidade(candidato, vaga) {
   console.log(`Habilidades Faltantes: ${habFaltantes}`);
   console.log(`Classificação: ${classificacao}`);
 }
+
+function listarHabilidadesFaltantes(candidato, vaga) {
+  let habFaltantes = calcularHabilidadesFaltantes(candidato, vaga);
+  habFaltantes =
+    habFaltantes.length === 0
+      ? "0 habilidades. O candidato possui todas as habilidades exigidas."
+      : `\n- ${habFaltantes.join("\n- ")}`;
+
+  console.log(
+    `Para a vaga da empresa ${vaga.empresa}, faltam: ${habFaltantes}`,
+  );
+}
