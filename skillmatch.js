@@ -241,3 +241,92 @@ function criarContadorDeAnalises() {
     return total;
   };
 }
+
+// ============================================================
+// PROMISE E ASYNC/AWAIT
+// ============================================================
+
+function buscarVagasSimuladas() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(vagas);
+    }, 1000);
+  });
+}
+
+// ============================================================
+// EXECUÇÃO
+// ============================================================
+
+// async — indica que é uma função assíncrona
+async function iniciarSistema() {
+  console.log("\n=== Async/Await — Carregar Vagas ===");
+
+  const vagaGenerica = new Vaga(
+    5,
+    "StarTech",
+    "Auxiliar de Desenvolvimento Web",
+    ["HTML", "CSS", "GitHub", "Lógica de Programação"],
+    2300,
+    "Híbrido",
+  );
+
+  // Criando uma nova vaga a partir da classe VagaFrontEnd.
+  // Essa vaga também herda as informações da classe Vaga.
+  const vagaNova = new VagaFrontEnd(
+    6,
+    "Code Brasil",
+    "Estágio Front-End",
+    ["JavaScript", "Kanban", "GitHub", "React"],
+    2500,
+    "Remoto",
+    "Júnior",
+  );
+
+  vagas.push(vagaGenerica);
+  vagas.push(vagaNova);
+
+  // await — pausa a execução desta função até a Promise
+  // buscarVagasSimuladas() ser resolvida.
+  const vagasCarregadas = await buscarVagasSimuladas();
+
+  console.log("Vagas carregadas com sucesso!");
+  console.log(vagasCarregadas);
+
+  const contarAnalise = criarContadorDeAnalises();
+
+  console.log("\n=== Compatibilidade: Dev Solutions ===");
+  calcularCompatibilidade(candidato, vagasCarregadas[0]);
+  console.log(`Análise nº ${contarAnalise()}`);
+
+  console.log("\n=== Habilidades Faltantes: PixelCode ===");
+  listarHabilidadesFaltantes(candidato, vagasCarregadas[1]);
+  console.log(`Análise nº ${contarAnalise()}`);
+
+  console.log("\n=== Recomendação de Estudo: PixelWave Studio ===");
+  gerarRecomendacaoDeEstudo(candidato, vagasCarregadas[3]);
+  console.log(`Análise nº ${contarAnalise()}`);
+
+  console.log("\n=== Demonstração da Classe Vaga: StarTech ===");
+  console.log(vagaGenerica.exibirResumo());
+  console.log(`Análise nº ${contarAnalise()}`);
+
+  console.log("\n=== Demonstração da Classe VagaFrontEnd: Code Brasil ===");
+  console.log(vagaNova.exibirResumo());
+  console.log(vagaNova.exibirNivel());
+  console.log(`Análise nº ${contarAnalise()}`);
+
+  console.log("\n=== Resumo de Todas as Vagas ===");
+  gerarResumoDeVagas(candidato, vagasCarregadas);
+  console.log(`Análise nº ${contarAnalise()}`);
+
+  console.log("\n=== Melhor Vaga ===");
+  melhorVaga(candidato, vagasCarregadas);
+  console.log(`Análise nº ${contarAnalise()}`);
+
+  console.log("\n=== Callback ===");
+  finalizarAnalise(candidato.nome, exibirMensagemFinal);
+}
+
+// Aqui a função assíncrona é chamada.
+iniciarSistema();
