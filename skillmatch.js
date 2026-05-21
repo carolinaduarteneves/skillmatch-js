@@ -177,3 +177,14 @@ function listarHabilidadesFaltantes(candidato, vaga) {
     `Para a vaga da empresa ${vaga.empresa}, faltam: ${habFaltantes}`,
   );
 }
+
+function gerarRecomendacaoDeEstudo(candidato, vaga) {
+  let habFaltantes = calcularHabilidadesFaltantes(candidato, vaga);
+
+  const recomendacao =
+    habFaltantes.length === 0
+      ? "Não há. O candidato possui os conhecimentos exigidos."
+      : `priorize estudar \n- ${habFaltantes.join("\n- ")}`;
+
+  console.log(`Recomendação de Estudo: ${recomendacao}`);
+}
