@@ -93,3 +93,14 @@ class Vaga {
     return `${this.cargo} na empresa ${this.empresa}`;
   }
 }
+
+class VagaFrontEnd extends Vaga {
+  constructor(id, empresa, cargo, requisitos, salario, modalidade, nivel) {
+    super(id, empresa, cargo, requisitos, salario, modalidade);
+    this.nivel = nivel;
+  }
+
+  exibirNivel() {
+    return `Nível da vaga: ${this.nivel}`;
+  }
+}
