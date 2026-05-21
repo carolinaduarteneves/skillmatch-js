@@ -198,3 +198,18 @@ function gerarResumoDeVagas(candidato, vagas) {
 
   resumos.forEach((resumo) => console.log(resumo));
 }
+
+// reduce — encontrar a vaga com maior compatibilidade
+function melhorVaga(candidato, vagas) {
+  const melhor = vagas.reduce((melhorAtual, vagaAtual) => {
+    const percentualAtual = calcularPercentual(candidato, vagaAtual);
+    const percentualMelhor = calcularPercentual(candidato, melhorAtual);
+
+    return percentualAtual > percentualMelhor ? vagaAtual : melhorAtual;
+  });
+
+  const percentual = calcularPercentual(candidato, melhor);
+
+  console.log(`Vaga mais compatível: ${melhor.empresa} - ${melhor.cargo}`);
+  console.log(`Compatibilidade: ${percentual}%`);
+}
