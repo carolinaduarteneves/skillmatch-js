@@ -188,3 +188,13 @@ function gerarRecomendacaoDeEstudo(candidato, vaga) {
 
   console.log(`Recomendação de Estudo: ${recomendacao}`);
 }
+
+// map — gerar resumo de compatibilidade de todas as vagas
+function gerarResumoDeVagas(candidato, vagas) {
+  const resumos = vagas.map((vaga) => {
+    const percentual = calcularPercentual(candidato, vaga);
+    return `${vaga.empresa} (${vaga.cargo}): ${percentual}% de compatibilidade`;
+  });
+
+  resumos.forEach((resumo) => console.log(resumo));
+}
