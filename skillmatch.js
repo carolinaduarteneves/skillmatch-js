@@ -228,3 +228,16 @@ function exibirMensagemFinal(nome) {
     `${nome}, revise suas habilidades faltantes e atualize seu plano de estudos.`,
   );
 }
+
+// ============================================================
+// CLOSURE
+// ============================================================
+
+function criarContadorDeAnalises() {
+  let total = 0;
+
+  return function () {
+    total++;
+    return total;
+  };
+}
