@@ -174,8 +174,11 @@ No SkillMatch JS, `buscarVagasSimuladas()` imita esse comportamento: a `Promise`
 
 ## Links
 
-- 📋 **Quadro Kanban (Trello):** [inserir link do Trello aqui]
-- 🎥 **Vídeo explicativo do projeto:** [inserir link do vídeo aqui]
+- 📋 **Quadro Kanban (Trello):** [Acessar quadro no Trello](https://trello.com/invite/b/6a0b0c626e161ed934c0f6a7/ATTI34167681310228e3446891a5f6de132f0D3FCE0A/skillmatch-js-simulador-de-compatibilidade)
+
+- 🎥 **Vídeo explicativo do projeto:**
+  - [Assistir no YouTube](https://youtu.be/TzRjym90JDU?feature=shared)
+  - [Assistir pelo Google Drive](https://drive.google.com/file/d/1BLv7pGvetEJRj0301jw1NKtuf5YHqH6T/view?usp=drivesdk)
 
 ---
 
